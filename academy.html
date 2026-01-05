@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy | Rhemanized Nation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="academy.css">
+</head>
+
+<body>
+    <div class="academy-bg-glow"></div>
+
+    <header class="main-header">
+        <div class="logo">RHEMANIZED <span>NATION</span></div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="event.html">Events</a></li>
+                <li class="donate-link"><a href="give.html">Give Online</a></li>
+            </ul>
+        </nav>
+        <button class="nav-toggle" aria-label="toggle navigation">&#9776;</button>
+    </header>
+
+    <main>
+        <section class="academy-hero">
+            <div class="container hero-glass-box">
+                <p class="overline-text">RHEMANIZED NATION EDUCATION SYSTEM</p>
+                <h1>YOUNG REVIVALIST <br><span class="text-gradient">ACADEMY</span></h1>
+                <p class="tagline">A dynamic institution dedicated to raising a new generation of passionate Christ-followers worldwide.</p>
+                
+                <div class="admissions-pill">
+                    <span class="dot"></span> Admissions for the Foundational Class are OPEN and FREE!
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="container info-grid">
+            <div class="glass-card about-block">
+                <h2 class="section-title">ABOUT THE ACADEMY</h2>
+                <p>An interdenominational institution focused on balancing spiritual growth with practical life skills. We empower youth to discover their identity and authority in Christ.</p>
+            </div>
+            
+            <div class="glass-card commission-block">
+                <h2 class="section-title">THE APOSTOLIC COMMISSION</h2>
+                <p>We are commissioned in the army of Zion to bring Revival to Africa. This move starts from Lagos and advances globally to fulfill the Great Commission.</p>
+                <p class="scripture">Matthew 10:7-8 • Ezekiel 22:30</p>
+            </div>
+        </section>
+
+        <section class="mandate-mission-section container">
+            <h2 class="grid-header">CORE MANDATE & MISSION</h2>
+            <div class="grid-container">
+                <div id="mandate" class="black-card">
+                    <h3>THE FIVEFOLD MANDATE</h3>
+                    <ul class="clean-list">
+                        <li>Catch them Young</li>
+                        <li>Raise them Saved</li>
+                        <li>Disciple unto Maturity</li>
+                        <li>Ignite Passion for Souls</li>
+                        <li>Prepare for the End-time</li>
+                    </ul>
+                </div>
+                
+                <div id="mission" class="black-card">
+                    <h3>EMPOWERMENT AREAS</h3>
+                    <ul class="clean-list">
+                        <li>Agents of Transformation</li>
+                        <li>Missionary Intercessors</li>
+                        <li>Effective Evangelists</li>
+                        <li>Global Disciple-Makers</li>
+                    </ul>
+                </div>
+
+                <div class="black-card highlight-card">
+                    <h3>PURPOSE-DRIVEN TRAINING</h3>
+                    <p>Training Apostolic Worshippers, Gospel Film Makers, Sports Ministers, and Apostolic Witnesses.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-cta">
+            <div class="container cta-glass">
+                <p>ARE YOU READY TO IGNITE A FIRE FOR GOD?</p>
+                <div class="cta-btns">
+                    <a href="yraform.html" class="btn primary-btn large">I'M READY TO ENROLL</a>
+                    <a href="admin.html" class="btn outline-btn large">MEET THE TEAM</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 RHEMANIZED NATION ACADEMY</p>
+    </footer>
+
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const mainNav = document.querySelector('.main-nav');
+        navToggle.addEventListener('click', () => mainNav.classList.toggle('nav-open'));
+    </script>
+</body>
+</html>

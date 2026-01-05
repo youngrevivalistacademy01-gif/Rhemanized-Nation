@@ -1,0 +1,188 @@
+:root {
+    --white: #ffffff;
+    --peach-bg: #fff5f0;
+    --peach-accent: #ff9a7b;
+    --black: #000000;
+    --text-dark: #1a1a1a;
+    --text-muted: #666666;
+    --border: rgba(0,0,0,0.06);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--white);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Luxury Sticky Header */
+.main-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 25px 8%; background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 1000;
+}
+.brand { font-weight: 800; letter-spacing: 2px; font-size: 0.85rem; color: var(--black); }
+.main-nav a { 
+    text-decoration: none; color: var(--text-dark); 
+    font-size: 0.75rem; font-weight: 700; margin-left: 30px; 
+    text-transform: uppercase; letter-spacing: 1px;
+}
+
+/* GOC Section Layout */
+.goc-standalone-flow { padding-top: 40px; }
+
+.goc-section { 
+    padding: 100px 8%; 
+    border-bottom: 1px solid var(--peach-bg);
+    overflow: hidden;
+}
+
+.goc-container {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Alternating Logic */
+.goc-container.alternate { flex-direction: row-reverse; }
+
+/* Visual Block with Floating Effect */
+.goc-visual {
+    flex: 1;
+    max-width: 420px;
+    position: relative;
+    z-index: 1;
+}
+
+.goc-visual img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 24px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+    transition: transform 0.5s ease;
+}
+
+/* Decorative Background element behind images */
+.goc-visual::after {
+    content: '';
+    position: absolute;
+    top: 20px; left: 20px;
+    width: 100%; height: 100%;
+    background: var(--peach-bg);
+    z-index: -1;
+    border-radius: 24px;
+    transition: 0.5s ease;
+}
+
+.goc-section:hover .goc-visual img { transform: translateY(-10px); }
+.goc-section:hover .goc-visual::after { transform: translate(10px, 10px); }
+
+/* Text Content */
+.goc-text { flex: 1.2; }
+
+.rank-tag {
+    display: inline-block;
+    background: var(--black);
+    color: var(--white);
+    padding: 6px 14px;
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    margin-bottom: 25px;
+    border-radius: 4px;
+}
+
+.name {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 30px;
+}
+
+.serif-italic {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 900;
+    color: var(--peach-accent);
+}
+
+.bio-body p {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+/* Quote Block */
+.quote-block {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    border-left: 3px solid var(--peach-accent);
+    padding: 10px 0 10px 25px;
+    margin: 40px 0;
+    color: var(--text-dark);
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+/* Social Links */
+.social-links { display: flex; gap: 15px; }
+.social-links a {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: #f8f8f8;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-dark);
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none;
+    border: 1px solid #eee;
+}
+.social-links a:hover {
+    background: var(--black);
+    color: var(--white);
+    transform: scale(1.1);
+}
+
+/* Responsive (Anti-Clog) */
+@media (max-width: 968px) {
+    .goc-section { padding: 80px 5%; }
+    .goc-container, .goc-container.alternate {
+        flex-direction: column;
+        gap: 50px;
+        text-align: center;
+    }
+    
+    .goc-visual {
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    .name { font-size: 2.4rem; }
+    
+    .bio-body p { text-align: center; font-size: 1rem; }
+    
+    .quote-block {
+        text-align: left;
+        font-size: 1.15rem;
+        margin: 30px 0;
+    }
+    
+    .social-links { justify-content: center; }
+}
+
+.final-footer {
+    padding: 80px 8% 40px;
+    text-align: center;
+    background: var(--white);
+    border-top: 1px solid var(--peach-bg);
+}
+.final-footer p { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; }

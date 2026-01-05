@@ -1,0 +1,110 @@
+:root {
+    --peach: #ff9a7b;
+    --soft-peach: #fff5f0;
+    --white: #ffffff;
+    --black: #000000;
+    --text: #1a1a1a;
+    --grey: #555555;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: var(--white);
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    line-height: 1.6;
+}
+
+.academy-bg-glow {
+    position: fixed; top: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at top right, var(--soft-peach), transparent);
+    z-index: -1;
+}
+
+/* Header & Nav */
+.main-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 8%; background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000;
+}
+.logo { font-weight: 800; font-size: 1rem; }
+.logo span { color: var(--peach); }
+.main-nav ul { list-style: none; display: flex; align-items: center; gap: 25px; }
+.main-nav a { text-decoration: none; color: var(--text); font-size: 0.8rem; font-weight: 700; }
+.donate-link a { background: var(--black); color: white; padding: 8px 18px; border-radius: 50px; }
+.nav-toggle { display: none; background: none; border: none; font-size: 1.5rem; }
+
+/* Hero Section */
+.container { width: 85%; max-width: 1200px; margin: 0 auto; }
+.academy-hero { padding: 100px 0; text-align: center; }
+.overline-text { font-size: 0.7rem; font-weight: 800; letter-spacing: 3px; color: var(--peach); margin-bottom: 20px; }
+h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 25px; }
+.text-gradient { color: transparent; -webkit-text-stroke: 1px var(--black); }
+.tagline { max-width: 600px; margin: 0 auto 40px; color: var(--grey); font-size: 1.1rem; }
+
+.admissions-pill {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--soft-peach); color: var(--peach);
+    padding: 10px 20px; border-radius: 50px; font-size: 0.8rem; font-weight: 800;
+}
+.dot { width: 8px; height: 8px; background: var(--peach); border-radius: 50%; animation: pulse 1.5s infinite; }
+
+/* Info Grid */
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; padding: 60px 0; }
+.glass-card { background: var(--soft-peach); padding: 50px; border-radius: 30px; }
+.section-title { font-size: 0.8rem; letter-spacing: 2px; color: var(--peach); margin-bottom: 20px; }
+.scripture { margin-top: 20px; font-style: italic; color: var(--peach); font-weight: 600; }
+
+/* Mandate Section - BLACK CARDS */
+.mandate-mission-section { padding: 80px 0; }
+.grid-header { text-align: center; margin-bottom: 50px; font-size: 1.5rem; letter-spacing: 1px; }
+.grid-container { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+}
+.black-card { 
+    background: var(--black); 
+    color: var(--white); 
+    padding: 40px; 
+    border-radius: 25px; 
+    transition: 0.3s;
+}
+.black-card h3 { color: var(--peach); font-size: 0.9rem; margin-bottom: 20px; letter-spacing: 1px; }
+.clean-list { list-style: none; }
+.clean-list li { margin-bottom: 12px; font-size: 0.9rem; position: relative; padding-left: 20px; }
+.clean-list li::before { content: '•'; position: absolute; left: 0; color: var(--peach); }
+.highlight-card { background: var(--peach); color: white; }
+.highlight-card h3 { color: var(--black); }
+
+/* Final CTA */
+.final-cta { padding: 100px 0; text-align: center; }
+.cta-glass { background: var(--black); color: white; padding: 80px 40px; border-radius: 40px; }
+.cta-btns { display: flex; justify-content: center; gap: 20px; margin-top: 40px; }
+.btn { text-decoration: none; padding: 15px 35px; border-radius: 12px; font-weight: 800; font-size: 0.8rem; }
+.primary-btn { background: var(--peach); color: white; }
+.outline-btn { border: 1px solid white; color: white; }
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    .main-nav { display: none; }
+    .nav-toggle { display: block; }
+    
+    .info-grid { grid-template-columns: 1fr; }
+    .grid-container { grid-template-columns: 1fr; }
+    
+    .academy-hero { padding: 60px 0; }
+    h1 { font-size: 2.8rem; }
+    
+    .cta-btns { flex-direction: column; }
+    .btn { width: 100%; }
+    
+    .glass-card, .black-card { padding: 30px; } /* Breathable but compact on mobile */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}

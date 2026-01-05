@@ -1,0 +1,123 @@
+:root {
+    --white: #ffffff;
+    --peach-bg: #fff5f0;
+    --peach-accent: #ff9a7b;
+    --black: #000000;
+    --text-dark: #1a1a1a;
+    --text-grey: #666666;
+    --border: rgba(0,0,0,0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--white);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--text-dark);
+}
+
+/* Header */
+.main-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 25px 8%; background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 1000;
+}
+.brand { font-weight: 800; font-size: 0.9rem; letter-spacing: 1px; }
+.main-nav a { text-decoration: none; color: var(--text-dark); font-size: 0.8rem; font-weight: 700; margin-left: 25px; }
+
+/* Hero */
+.give-hero {
+    padding: 100px 8% 60px;
+    text-align: center;
+    background: linear-gradient(to bottom, var(--white), var(--peach-bg));
+}
+.eyebrow { font-size: 0.7rem; font-weight: 800; letter-spacing: 3px; color: var(--peach-accent); display: block; margin-bottom: 15px; }
+h1 { font-size: clamp(2.5rem, 7vw, 4.5rem); font-weight: 800; line-height: 1; margin-bottom: 20px; }
+.serif-italic { font-family: 'Playfair Display', serif; font-style: italic; color: var(--peach-accent); }
+.hero-sub { max-width: 600px; margin: 0 auto; color: var(--text-grey); font-size: 1.1rem; }
+
+/* Methods Grid */
+.methods-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 0 8% 80px;
+    margin-top: -30px; /* Slight overlap for modern look */
+}
+
+.method-card {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 30px;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* THE BLACK CARD (Option 02) */
+.method-card.dark-accent {
+    background: var(--black);
+    color: var(--white);
+    border: none;
+}
+
+.method-tag { font-size: 0.65rem; font-weight: 800; letter-spacing: 2px; color: var(--peach-accent); display: block; margin-bottom: 10px; }
+.method-card h3 { font-size: 1.5rem; margin-bottom: 30px; }
+
+/* Bank Data Table */
+.data-table { margin-bottom: 30px; }
+.data-row {
+    display: flex; justify-content: space-between;
+    padding: 15px 0; border-bottom: 1px solid var(--border);
+}
+.data-row.no-border { border: none; }
+.label { font-size: 0.7rem; font-weight: 800; color: var(--text-grey); }
+.value { font-size: 0.95rem; font-weight: 700; }
+.value.accent { color: var(--peach-accent); font-size: 1.2rem; }
+
+/* Buttons */
+.action-btn {
+    background: var(--black); color: white; border: none;
+    padding: 18px; border-radius: 12px; font-weight: 800;
+    cursor: pointer; transition: 0.3s; width: 100%;
+}
+.action-btn:hover { background: var(--peach-accent); }
+
+/* Payment Selection - Option 02 Internal */
+.styled-select {
+    width: 100%; padding: 15px; background: #222; border: 1px solid #333;
+    color: white; border-radius: 10px; margin: 15px 0 30px;
+}
+.gate-link {
+    display: block; text-align: center; text-decoration: none;
+    padding: 15px; border-radius: 10px; font-weight: 800; font-size: 0.8rem;
+    margin-bottom: 10px; transition: 0.3s;
+}
+.paystack { background: #011b33; color: #00d2ff; }
+.flutterwave { background: #ff9a00; color: #fff; }
+
+/* Impact Section */
+.impact-minimal {
+    display: flex; gap: 50px; padding: 80px 8%; background: var(--peach-bg);
+}
+.stat-num { font-size: 2.5rem; font-weight: 800; color: var(--peach-accent); opacity: 0.3; }
+.impact-column h4 { margin: 10px 0; font-size: 1.2rem; }
+.impact-column p { color: var(--text-grey); font-size: 0.9rem; }
+
+/* Strategic Footer */
+.strategic-footer {
+    padding: 100px 8%; text-align: center;
+}
+.strategic-footer h2 { font-size: 2.5rem; margin-bottom: 20px; }
+.inline-link { font-weight: 800; color: var(--black); text-decoration: none; border-bottom: 2px solid var(--peach-accent); }
+
+/* MOBILE (Un-clogged) */
+@media (max-width: 768px) {
+    .methods-grid { grid-template-columns: 1fr; margin-top: 20px; }
+    .impact-minimal { flex-direction: column; }
+    .method-card { padding: 30px 20px; }
+    .data-row { flex-direction: column; gap: 5px; }
+    .value.accent { font-size: 1.1rem; }
+}

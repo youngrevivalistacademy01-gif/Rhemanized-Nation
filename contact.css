@@ -1,0 +1,108 @@
+:root {
+    --white: #ffffff;
+    --peach-bg: #fff5f0;
+    --peach-accent: #ff9a7b;
+    --black: #000000;
+    --text-dark: #1a1a1a;
+    --text-grey: #666666;
+    --border: rgba(0,0,0,0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--white);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* Header */
+.main-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 25px 8%; background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 1000;
+}
+.brand { font-weight: 800; font-size: 0.9rem; letter-spacing: 1px; }
+.main-nav a { text-decoration: none; color: var(--text-dark); font-size: 0.8rem; font-weight: 700; margin-left: 25px; text-transform: uppercase; }
+
+/* Hero */
+.contact-hero {
+    padding: 100px 8% 60px;
+    text-align: center;
+    background: linear-gradient(to bottom, var(--white), var(--peach-bg));
+}
+.eyebrow { font-size: 0.7rem; font-weight: 800; letter-spacing: 3px; color: var(--peach-accent); display: block; margin-bottom: 15px; }
+h1 { font-size: clamp(2.5rem, 7vw, 4rem); font-weight: 800; line-height: 1; margin-bottom: 20px; }
+.serif-italic { font-family: 'Playfair Display', serif; font-style: italic; color: var(--peach-accent); }
+.contact-hero p { max-width: 600px; margin: 0 auto; color: var(--text-grey); font-size: 1.1rem; }
+
+/* Grid Layout */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
+    padding: 0 8% 100px;
+    max-width: 1400px;
+    margin: -20px auto 0; /* Modern overlap */
+}
+
+/* Form Styling */
+.form-card {
+    background: var(--white);
+    padding: 50px;
+    border-radius: 30px;
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+}
+.form-card h3 { font-size: 1.8rem; margin-bottom: 30px; font-weight: 800; }
+
+.input-group { margin-bottom: 25px; }
+.input-group label { display: block; font-size: 0.65rem; font-weight: 800; color: var(--peach-accent); letter-spacing: 1px; margin-bottom: 8px; }
+.input-group input, .input-group textarea {
+    width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #eee;
+    background: #fcfcfc; font-family: inherit; font-size: 0.9rem; outline: none; transition: 0.3s;
+}
+.input-group input:focus, .input-group textarea:focus { border-color: var(--peach-accent); background: #fff; }
+
+.submit-btn {
+    background: var(--black); color: #fff; border: none; padding: 18px 35px;
+    border-radius: 12px; font-weight: 800; font-size: 0.85rem; cursor: pointer;
+    transition: 0.3s; width: 100%;
+}
+.submit-btn:hover { background: var(--peach-accent); transform: translateY(-2px); }
+
+/* Sidebar Styling */
+.info-sidebar {
+    background: var(--black);
+    color: var(--white);
+    padding: 50px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.info-box { margin-bottom: 40px; }
+.info-box .label { font-size: 0.65rem; font-weight: 800; color: var(--peach-accent); letter-spacing: 2px; display: block; margin-bottom: 12px; }
+.info-box p { font-size: 1.1rem; font-weight: 400; opacity: 0.9; }
+.info-box .sub-text { font-size: 0.8rem; opacity: 0.5; margin-top: 5px; }
+.info-box small { font-size: 0.7rem; opacity: 0.5; }
+
+/* Social Icons */
+.social-links-grid { display: flex; gap: 15px; flex-wrap: wrap; }
+.social-links-grid a {
+    width: 45px; height: 45px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; text-decoration: none; transition: 0.3s;
+}
+.social-links-grid a:hover { background: var(--peach-accent); border-color: var(--peach-accent); color: var(--black); }
+
+/* Mobile Optimization (Anti-Clog) */
+@media (max-width: 968px) {
+    .contact-grid { grid-template-columns: 1fr; margin-top: 20px; padding: 0 5% 60px; }
+    .form-card, .info-sidebar { padding: 40px 25px; }
+    .contact-hero { padding: 80px 5% 40px; }
+}
+
+.contact-footer { padding: 50px; text-align: center; font-size: 0.8rem; color: var(--text-grey); border-top: 1px solid var(--border); }

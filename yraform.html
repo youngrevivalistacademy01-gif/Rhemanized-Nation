@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YRA Enrollment | Rhemanized Nation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="yrastyle.css">
+</head>
+<body class="form-body">
+
+    <div class="ambient-glow"></div>
+
+    <main class="form-page-main">
+        <div class="container form-wrapper">
+
+            <div class="form-header">
+                <span class="form-badge">ENROLLMENT OPEN</span>
+                <h1>Young Revivalist <br>Academy Application</h1>
+                <p class="hero-sub">Welcome, future revivalist! Fill out the form below carefully to enroll in the Foundational Class.</p>
+                <div class="form-note">Admission is <span>FREE</span>. All fields marked with (*) are required.</div>
+            </div>
+
+            <form target="_blank" action="https://formsubmit.co/363c3636e445ce553575ec9c87a42b41" method="POST" class="academy-form">
+                
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="full-name">Full Name *</label>
+                            <input type="text" id="full-name" name="Full Name" required placeholder="Enter your full name">
+                        </div>
+                    </div>
+
+                    <div class="form-row dual">
+                        <div class="form-group">
+                            <label for="date-of-birth">Date of Birth *</label>
+                            <input type="date" id="date-of-birth" name="Date of Birth" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Gender *</label>
+                            <select id="gender" name="Gender" required>
+                                <option value="">Select</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Contact Details</legend>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="Email Address" required placeholder="example@email.com">
+                    </div>
+                    
+                    <div class="form-row dual">
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="Phone Number" required placeholder="+234...">
+                        </div>
+                        <div class="form-group">
+                            <label for="city-country">City & Country *</label>
+                            <input type="text" id="city-country" name="City and Country" required placeholder="Lagos, Nigeria">
+                        </div>
+                    </div>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Your Calling</legend>
+                    <div class="form-group">
+                        <label for="church">Current Denomination (Optional)</label>
+                        <input type="text" id="church" name="Church Denomination">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="motivation">Why do you want to join the Academy? *</label>
+                        <textarea id="motivation" name="Motivation" rows="4" required placeholder="Share your passion for Christ..."></textarea>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="agreement" name="Agreement" required>
+                        <label for="agreement">I agree to dedicate time to the curriculum and follow its core values. *</label>
+                    </div>
+                </fieldset>
+                
+                <button type="submit" class="submit-btn">SUBMIT APPLICATION</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="form-footer">
+        <p>&copy; 2026 RHEMANIZED NATION</p>
+    </footer>
+
+</body>
+</html>
