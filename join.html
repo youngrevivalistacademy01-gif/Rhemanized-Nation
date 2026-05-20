@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enrollment Application | Young Revivalist Academy</title>
+    
+    <link rel="stylesheet" href="join.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script src="https://forminit.com/sdk/v1/forminit.js"></script>
+</head>
+<body class="enroll-body">
+
+    <div class="enroll-container">
+        
+        <div class="info-sidebar">
+            <div class="sidebar-content">
+                <span class="academy-tag">Admissions Open</span>
+                <h1>The Mandate of <span>Gospel Education</span></h1>
+                <p class="enlightenment-text">
+                    True spiritual maturity is not an accident; it is the product of intentional, deliberate alignment with truth. In an era saturated with conflicting narratives, <strong>Gospel Education</strong> serves as the structural framework that anchors the believer's mind in the accurate architecture of God's Word. It is the calibration of your spirit to execute divine mandates with precision.
+                </p>
+                <p class="enlightenment-text">
+                    The <strong>Young Revivalist Academy</strong> stands as an incubator for this generation. We do not merely pass down information; we facilitate transformation. Through rigorous spiritual grounding, character architecture, and doctrinal clarity, we raise seasoned witnesses equipped to assert dominion across global spheres. 
+                </p>
+                
+                <div class="waitlist-note">
+                    <i class="fa-brands fa-whatsapp whatsapp-icon"></i>
+                    <div>
+                        <h4>Important Notice:</h4>
+                        <p>Upon clicking submit, your application will be dispatched to the central registry, and you will be automatically redirected to our official <strong>WhatsApp Waitlist Group</strong> for cohort updates.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-content">
+            <form id="academyEnrollmentForm" class="academy-form">
+                
+                <h2>Begin Your <span>Journey</span></h2>
+                <p class="form-subtitle">Fill in your information below.</p>
+
+                <div class="input-group">
+                    <label for="name">Full Name</label>
+                    <div class="input-wrapper">
+                        <i class="fa-regular fa-user"></i>
+                        <input type="text" id="name" name="fi-sender-fullName" placeholder="John Daniel" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <div class="input-wrapper">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" id="email" name="fi-sender-email" placeholder="example@gmail.com" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="phone">WhatsApp Number</label>
+                    <div class="input-wrapper">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span style="position: absolute; left: 42px; color: #FF8C00; font-weight: 600; font-size: 0.95rem; opacity: 0.85;">+234</span>
+                        <input type="tel" id="phone" name="fi-sender-phone" placeholder="8031234567" style="padding-left: 90px;" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="expectations">What are your expectations?</label>
+                    <textarea id="expectations" name="fi-text-expectations" rows="3" placeholder="What do you expect to transition into during your time here?" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label>Are you born again?</label>
+                    <div class="radio-container">
+                        <label class="radio-label">
+                            <input type="radio" name="fi-radio-bornagain" value="Yes" required>
+                            <span>Yes, fully surrendered</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="fi-radio-bornagain" value="No">
+                            <span>Still seeking clarity</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="purpose">Have you discovered purpose? If yes, share with us</label>
+                    <textarea id="purpose" name="fi-text-purpose" rows="3" placeholder="Leave blank if you are here to discover it..."></textarea>
+                </div>
+
+                <button type="submit" id="submitBtn" class="enroll-submit-btn">
+                    <span>Submit Application</span> <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+    <script src="join.js"></script>
+</body>
+</html>
