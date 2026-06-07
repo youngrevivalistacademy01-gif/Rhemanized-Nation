@@ -399,7 +399,7 @@ body {
     padding: 16px 32px;
     border-radius: 12px;
     backdrop-filter: blur(5px);
-    transition: background 0.3s base, border-color 0.3s ease, transform 0.3s var(--transition-smooth);
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s var(--transition-smooth);
 }
 
 .outline-btn:hover {
@@ -644,15 +644,135 @@ body {
 }
 
 /* ==========================================================================
-   RESPONSIVE DESIGN (BREAKPOINTS)
+   PURE CSS SMART MOBILE ENGINE (NO HTML CHANGES ALLOWED)
    ========================================================================== */
 @media (max-width: 768px) {
-    .nav-container { padding: 20px; }
-    .content-wrapper { padding: 0 20px; }
-    .hero-section { padding-top: 120px; }
-    .hero-actions { flex-direction: column; align-items: stretch; }
-    .main-btn, .outline-btn { justify-content: center; }
-    .quick-nav-bar { grid-template-columns: 1fr; }
-    .soft-card { padding: 30px; }
-    .cta-box { padding: 60px 20px; }
+    /* 1. Global Container Padding Protection */
+    .nav-container { 
+        padding: 16px 20px; 
+    }
+    .content-wrapper { 
+        padding: 0 20px; 
+    }
+
+    /* 2. Intelligent Top Navigation Adaptability */
+    .nav-links {
+        gap: 15px; /* Compresses gap so links don't fly out of scope */
+    }
+    .nav-link {
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+    }
+    .give-pill {
+        font-size: 0.65rem;
+        padding: 8px 16px;
+    }
+
+    /* 3. Preloader Typography Protection */
+    .loader-title {
+        font-size: clamp(2.2rem, 10vw, 4rem);
+        letter-spacing: 0.15em;
+        text-indent: 0.15em;
+    }
+
+    /* 4. Balanced Hero Component Layout */
+    .hero-section { 
+        padding-top: 130px; 
+        padding-bottom: 40px; 
+    }
+    .hero-content {
+        margin-bottom: 50px;
+        text-align: left;
+    }
+    .hero-main-title {
+        margin-bottom: 20px;
+    }
+    .hero-p {
+        margin-bottom: 30px;
+    }
+
+    /* 5. Smart Mobile-First Action Module (Aligned Side-by-Side instead of ugly block stretching) */
+    .hero-actions { 
+        display: flex;
+        flex-direction: row; 
+        gap: 12px;
+        align-items: center;
+    }
+    .main-btn, .outline-btn { 
+        flex: 1;
+        justify-content: center;
+        padding: 14px 16px; 
+        font-size: 0.75rem;
+        border-radius: 10px;
+        white-space: nowrap;
+    }
+
+    /* 6. Clean, Side-Scrolling Ticker Viewport for the Quick Links */
+    .quick-nav-bar { 
+        display: flex;
+        grid-template-columns: none; /* Disables parent grid to prevent clunky blocks */
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        background-color: transparent;
+        border: none;
+        border-radius: 0;
+        margin: 0 -20px;
+        padding: 5px 20px 20px 20px;
+    }
+    /* Hide scrollbars seamlessly */
+    .quick-nav-bar::-webkit-scrollbar {
+        display: none;
+    }
+    .quick-nav-item {
+        flex: 0 0 240px; /* Snaps perfectly as cards instead of stretching endlessly */
+        scroll-snap-align: start;
+        border: 1px solid var(--card-border);
+        background-color: rgba(14, 14, 18, 0.9);
+        border-radius: 12px;
+        padding: 24px;
+        margin-right: 12px;
+    }
+
+    /* 7. Core Pillars Grid Adjustment */
+    .beliefs-section { 
+        padding: 80px 0; 
+    }
+    .section-header {
+        margin-bottom: 40px;
+    }
+    .beliefs-grid { 
+        grid-template-columns: 1fr; /* Stacks cards predictably */
+        gap: 20px; 
+    }
+    .soft-card { 
+        padding: 30px 24px; 
+    }
+
+    /* 8. Call to Action Polish */
+    .final-cta { 
+        padding-bottom: 80px; 
+    }
+    .cta-box { 
+        padding: 50px 20px; 
+        border-radius: 24px; 
+    }
+    .cta-box p.italic {
+        margin-bottom: 30px;
+    }
+    .enter-btn {
+        padding: 14px 32px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Extra safety rule for extremely micro screens (iPhone SE, etc.) */
+@media (max-width: 360px) {
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .main-btn, .outline-btn {
+        width: 100%;
+    }
 }
