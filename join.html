@@ -5,20 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enrollment Application | Young Revivalist Academy</title>
     
-    <link rel="stylesheet" href="join.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Unified Premium Geometric Typography Links -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="join.css">
 
+    <!-- Forminit Form SDK Engine (Untouched) -->
     <script src="https://forminit.com/sdk/v1/forminit.js"></script>
 </head>
 <body class="enroll-body">
 
+    <!-- MINIMAL STRUCTURAL BACKGROUND CORES -->
+    <div class="bg-gradient-layers">
+        <div class="grid-overlay"></div>
+    </div>
+
+    <!-- ELITE FORM WRAPPER CONTAINER -->
     <div class="enroll-container">
         
+        <!-- INTELLECTUAL APPLICATION SIDEBAR -->
         <div class="info-sidebar">
             <div class="sidebar-content">
-                <span class="academy-tag">Admissions Open</span>
-                <h1>The Mandate of <span>Gospel Education</span></h1>
+                <span class="academy-tag">// ADMISSIONS OPEN</span>
+                <h1>The Mandate of <br><span class="text-gradient">Gospel Education</span></h1>
+                
                 <p class="enlightenment-text">
                     True spiritual maturity is not an accident; it is the product of intentional, deliberate alignment with truth. In an era saturated with conflicting narratives, <strong>Gospel Education</strong> serves as the structural framework that anchors the believer's mind in the accurate architecture of God's Word. It is the calibration of your spirit to execute divine mandates with precision.
                 </p>
@@ -26,9 +36,10 @@
                     The <strong>Young Revivalist Academy</strong> stands as an incubator for this generation. We do not merely pass down information; we facilitate transformation. Through rigorous spiritual grounding, character architecture, and doctrinal clarity, we raise seasoned witnesses equipped to assert dominion across global spheres. 
                 </p>
                 
+                <!-- REGISTRY REDIRECTION NOTICE BOX -->
                 <div class="waitlist-note">
                     <i class="fa-brands fa-whatsapp whatsapp-icon"></i>
-                    <div>
+                    <div class="notice-text-wrapper">
                         <h4>Important Notice:</h4>
                         <p>Upon clicking submit, your application will be dispatched to the central registry, and you will be automatically redirected to our official <strong>WhatsApp Waitlist Group</strong> for cohort updates.</p>
                     </div>
@@ -36,69 +47,78 @@
             </div>
         </div>
 
+        <!-- ENROLLMENT INTERACTION BLOCK -->
         <div class="form-content">
             <form id="academyEnrollmentForm" class="academy-form">
                 
-                <h2>Begin Your <span>Journey</span></h2>
+                <h2>Begin Your <span class="accent-title-text">Journey</span></h2>
                 <p class="form-subtitle">Fill in your information below.</p>
 
+                <!-- Full Name Field -->
                 <div class="input-group">
                     <label for="name">Full Name</label>
                     <div class="input-wrapper">
-                        <i class="fa-regular fa-user"></i>
+                        <i class="fa-regular fa-user field-icon"></i>
                         <input type="text" id="name" name="fi-sender-fullName" placeholder="John Daniel" required>
                     </div>
                 </div>
 
+                <!-- Email Address Field -->
                 <div class="input-group">
                     <label for="email">Email Address</label>
                     <div class="input-wrapper">
-                        <i class="fa-regular fa-envelope"></i>
+                        <i class="fa-regular fa-envelope field-icon"></i>
                         <input type="email" id="email" name="fi-sender-email" placeholder="example@gmail.com" required>
                     </div>
                 </div>
 
+                <!-- WhatsApp Number Field -->
                 <div class="input-group">
-                    <label for="phone">WhatsApp Number (make use of +234 or your avaliable area code)</label>
-                    <div class="input-wrapper">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        <span style="position: absolute; left: 42px; color: #FF8C00; font-weight: 600; font-size: 0.95rem; opacity: 0.85;">+</span>
-                        <input type="tel" id="phone" name="fi-sender-phone" placeholder="8031234567" style="padding-left: 90px;" required>
+                    <label for="phone">WhatsApp Number (include your available area code)</label>
+                    <div class="input-wrapper phone-wrapper">
+                        <i class="fa-brands fa-whatsapp field-icon"></i>
+                        <span class="area-code-plus">+</span>
+                        <input type="tel" id="phone" name="fi-sender-phone" placeholder="2348031234567" required>
                     </div>
                 </div>
 
+                <!-- Expectations Textarea -->
                 <div class="input-group">
                     <label for="expectations">What are your expectations?</label>
                     <textarea id="expectations" name="fi-text-expectations" rows="3" placeholder="What do you expect to transition into during your time here?" required></textarea>
                 </div>
 
+                <!-- Born Again Radio Cluster -->
                 <div class="input-group">
-                    <label>Are you born again?</label>
+                    <label class="section-radio-label">Are you born again?</label>
                     <div class="radio-container">
                         <label class="radio-label">
                             <input type="radio" name="fi-radio-bornagain" value="Yes" required>
-                            <span>Yes, fully surrendered</span>
+                            <span class="custom-radio-text">Yes, fully surrendered</span>
                         </label>
                         <label class="radio-label">
                             <input type="radio" name="fi-radio-bornagain" value="No">
-                            <span>Still seeking clarity</span>
+                            <span class="custom-radio-text">Still seeking clarity</span>
                         </label>
                     </div>
                 </div>
 
+                <!-- Purpose Discovery Textarea -->
                 <div class="input-group">
                     <label for="purpose">Have you discovered purpose? If yes, share with us</label>
                     <textarea id="purpose" name="fi-text-purpose" rows="3" placeholder="Leave blank if you are here to discover it..."></textarea>
                 </div>
 
+                <!-- Submit Trigger Module -->
                 <button type="submit" id="submitBtn" class="enroll-submit-btn">
-                    <span>Submit Application</span> <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    <span>Submit Application</span> <i class="fa-solid fa-arrow-right-to-bracket button-arrow"></i>
                 </button>
             </form>
         </div>
 
     </div>
 
+    <!-- External Waitlist Action Scripts (Untouched) -->
     <script src="join.js"></script>
 </body>
 </html>
