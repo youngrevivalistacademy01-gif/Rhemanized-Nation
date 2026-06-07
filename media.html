@@ -2,38 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Archive | Rhemanized Nation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="media.css">
 </head>
 <body class="media-page">
 
-    <div class="ambient-bg"></div>
+    <div class="ambient-bg-glow"></div>
 
     <header class="luxury-nav">
         <div class="logo">RHEMA<span>ARCHIVE</span></div>
         <div class="nav-items">
             <a href="index.html">HOME</a>
             <a href="give.html">GIVE</a>
-            
         </div>
     </header>
 
     <main class="gallery-wrapper">
+        
         <section class="hero-slate">
+            <div class="slate-blur-backdrop" style="background-image: url('rxxx.jpg');"></div>
             <div class="slate-content">
-                <span class="top-label">RECOMMENDED Sermon</span>
+                <span class="top-label"><i class="fa-solid fa-star"></i> RECOMMENDED SERMON</span>
                 <h1>Activating <br>Encounters</h1>
                 <p class="hero-subtext">Revival Train 2023 • John Victor Solutionrhema</p>
                 <div class="action-row">
-                    <a href="" class="play-trigger">LISTEN NOW</a>
+                    <button class="play-trigger" data-embed="https://www.youtube.com/embed/lgc32bx7kHw" data-title="Activating Encounters" data-author="John Victor Solutionrhema">
+                        <i class="fa-solid fa-play"></i> LISTEN NOW
+                    </button>
                 </div>
             </div>
         </section>
 
         <section class="filter-strip">
             <div class="search-wrap">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
                 <input type="text" placeholder="Search the frequency...">
             </div>
             <div class="filter-tags">
@@ -44,41 +49,49 @@
         </section>
 
         <section class="grid-layout">
-            <div class="media-brick">
+            
+            <div class="media-brick" data-type="messages">
                 <div class="brick-img">
-                    <img src="rxxx.jpg" alt="Secret Place">
-                    <div class="brick-overlay"></div>
+                    <img src="rxxx.jpg" alt="The Secret Place">
+                    <div class="brick-overlay">
+                        <button class="icon-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
                 </div>
                 <div class="brick-info">
                     <span class="category">SERMON</span>
                     <h4>The Secret Place</h4>
-                    <a href="" class="access-link">OPEN ACCESS</a>
+                    <button class="access-link-trigger" data-embed="https://www.youtube.com/embed/lgc32bx7kHw" data-title="The Secret Place" data-author="Rhemanized Nation">OPEN ACCESS</button>
                 </div>
             </div>
 
-            <div class="media-brick">
+            <div class="media-brick" data-type="messages">
                 <div class="brick-img">
                     <img src="b2b.jpg" alt="Saving Faith">
-                    <div class="brick-overlay"></div>
+                    <div class="brick-overlay">
+                        <button class="icon-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
                 </div>
                 <div class="brick-info">
                     <span class="category">SERMON</span>
                     <h4>Saving Faith</h4>
-                    <a href="" class="access-link">OPEN ACCESS</a>
+                    <button class="access-link-trigger" data-embed="https://www.youtube.com/embed/lgc32bx7kHw" data-title="Saving Faith" data-author="Rhemanized Nation">OPEN ACCESS</button>
                 </div>
             </div>
 
-            <div class="media-brick-wide">
+            <div class="media-brick-wide" data-type="music">
                 <div class="brick-img">
                     <img src="jxxx.jpg" alt="The Rise">
-                    <div class="brick-overlay"></div>
+                    <div class="brick-overlay">
+                        <button class="icon-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
                 </div>
                 <div class="brick-info">
                     <span class="category">LATEST RELEASE</span>
                     <h4>The Rise: Apostolic Worshippers</h4>
-                    <a href="https://music.youtube.com/watch?v=lgc32bx7kHw" class="access-link">STREAM NOW</a>
+                    <button class="access-link-trigger" data-embed="https://www.youtube.com/embed/lgc32bx7kHw" data-title="The Rise: Apostolic Worshippers" data-author="Apostolic Worshippers">STREAM NOW</button>
                 </div>
             </div>
+
         </section>
     </main>
 
@@ -86,6 +99,87 @@
         <p>&copy; 2026 RHEMANIZED NATION</p>
     </footer>
 
+    <div id="videoTheaterModal" class="theater-modal-overlay">
+        <div class="theater-modal-container">
+            <button class="close-theater-btn"><i class="fa-solid fa-xmark"></i></button>
+            <div class="responsive-video-viewport">
+                <iframe id="theaterFrame" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="theater-meta-row">
+                <h3 id="theaterTitle">Sermon Title</h3>
+                <p id="theaterMeta">Speaker Metadata</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('videoTheaterModal');
+            const iframe = document.getElementById('theaterFrame');
+            const theaterTitle = document.getElementById('theaterTitle');
+            const theaterMeta = document.getElementById('theaterMeta');
+            const closeBtn = document.querySelector('.close-theater-btn');
+            
+            // Selector definitions
+            const triggers = document.querySelectorAll('.play-trigger, .access-link-trigger, .icon-play-btn, .brick-overlay');
+
+            triggers.forEach(element => {
+                element.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Traverse upwards to pull details safely if clicking inner icon components
+                    const source = element.closest('[data-embed]') || element.querySelector('[data-embed]') || element.closest('.media-brick, .media-brick-wide').querySelector('[data-embed]');
+                    
+                    if(source) {
+                        const embedUrl = source.getAttribute('data-embed');
+                        const title = source.getAttribute('data-title');
+                        const meta = source.getAttribute('data-author');
+                        
+                        // Pass source parameters cleanly into modal engine
+                        iframe.src = embedUrl + "?autoplay=1";
+                        theaterTitle.textContent = title;
+                        theaterMeta.textContent = meta;
+                        
+                        modal.classList.add('active');
+                        document.body.style.overflow = 'hidden'; // Stop background movement
+                    }
+                });
+            });
+
+            const closeTheater = () => {
+                modal.classList.remove('active');
+                iframe.src = ""; // Flush the frame background download thread cleanly
+                document.body.style.overflow = '';
+            };
+
+            closeBtn.addEventListener('click', closeTheater);
+            modal.addEventListener('click', (e) => {
+                if(e.target === modal) closeTheater();
+            });
+
+            // Clean Basic Archive Live Filter Toggle Mechanics
+            const tags = document.querySelectorAll('.tag');
+            const bricks = document.querySelectorAll('.media-brick, .media-brick-wide');
+
+            tags.forEach(tag => {
+                tag.addEventListener('click', () => {
+                    tags.forEach(t => t.classList.remove('active'));
+                    tag.classList.add('active');
+                    
+                    const dynamicQuery = tag.textContent.toLowerCase();
+                    
+                    bricks.forEach(brick => {
+                        const targetCategory = brick.getAttribute('data-type');
+                        if(dynamicQuery === 'all' || targetCategory === dynamicQuery) {
+                            brick.style.display = 'block';
+                        } else {
+                            brick.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
 </body>
 </html>
-
