@@ -4,29 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Mandate | Rhemanized Nation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;800&family=Playfair+Display:ital,wght@1,800&display=swap" rel="stylesheet">
+    
+    <!-- Unified Premium Design Typography & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;500;600;700;800&family=Playfair+Display:ital,wght@1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="about.css">
 </head>
 <body>
 
+    <!-- MINIMAL STRUCTURAL BACKGROUND CORES -->
+    <div class="bg-gradient-layers">
+        <div class="grid-overlay"></div>
+    </div>
+
+    <!-- HIGH-LEVEL FIXED NAVIGATION -->
     <nav class="glass-nav">
-        <div class="logo">RHEMANIZED <span>NATION</span></div>
-        <div class="nav-links">
-            <a href="index.html">HOME</a>
-            <a href="media.html">ARCHIVE</a>
-            <a href="give.html" class="give-pill">GIVE</a>
+        <div class="nav-container">
+            <div class="logo">RHEMANIZED <span class="logo-accent">NATION</span></div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">HOME</a>
+                <a href="media.html" class="nav-link">ARCHIVE</a>
+                <a href="give.html" class="give-pill">GIVE</a>
+            </div>
         </div>
     </nav>
 
+    <!-- MANIFESTO EDITORIAL CONTENT WRAPPER -->
     <main class="manifesto-wrapper">
         
+        <!-- PROPHECY & HERO STATEMENT -->
         <section class="about-hero">
             <div class="hero-line"></div>
-            <span class="eyebrow">OBADIAH 1:21</span>
+            <span class="eyebrow">// OBADIAH 1:21</span>
             <h1>WE STAND IN <br><span class="outline-text">THE GAP.</span></h1>
             <p class="hero-subtitle">Unlocking global revival by raising young generals to occupy the spheres of influence from nation to nation.</p>
         </section>
 
+        <!-- CORPORATE FOUNDATION SPLIT PANEL -->
         <section class="foundation-grid">
             <div class="foundation-header">
                 <span class="label">FOUNDATION</span>
@@ -34,17 +48,18 @@
             </div>
             <div class="foundation-body">
                 <p>We provide a safe, supportive environment for youths to thrive. We are dedicated to the holistic development of talents and skills before the world influences their values.</p>
-                <div class="scripture-callout">
+                <blockquote class="scripture-callout">
                     "Saviours shall come up on mount Zion to judge the mount of Esau; and the kingdom shall be the LORD's."
-                </div>
+                </blockquote>
             </div>
         </section>
 
+        <!-- STRATEGIC VISION MATRIX -->
         <section class="vision-matrix">
             <div class="matrix-item">
                 <div class="item-number">01</div>
                 <h3>DISCIPLE MAKING</h3>
-                <p>Raising young revivalists for global transformation. (Matt 28:19-20)</p>
+                <p>Raising young revivalists for global transformation. <span class="scripture-subtext">(Matt 28:19-20)</span></p>
             </div>
             <div class="matrix-item highlight">
                 <div class="item-number">02</div>
@@ -54,44 +69,55 @@
             <div class="matrix-item">
                 <div class="item-number">03</div>
                 <h3>INTERCESSION</h3>
-                <p>Nurturing a home for evangelists to influence society. (Ezekiel 22:30)</p>
+                <p>Nurturing a home for evangelists to influence society. <span class="scripture-subtext">(Ezekiel 22:30)</span></p>
             </div>
         </section>
 
+        <!-- ARCHITECTURAL CORE PILLARS MODULE -->
         <section class="pillars-section">
+            <span class="section-mini-tag">// THE STRATEGIC OVERVIEW</span>
             <h2 class="pillar-title">OUR 4 PILLARS</h2>
             <div class="pillar-row">
-                <div class="pillar-card"><span>01</span> YOUNG REVIVALIST ACADEMY</div>
-                <div class="pillar-card"><span>02</span> EQUIPPING THE STUDENT INITIATIVE</div>
-                <div class="pillar-card"><span>03</span> APOSTOLIC WORSHIPERS</div>
-                <div class="pillar-card"><span>04</span> WATCHER CONCLAVE</div>
+                <div class="pillar-card"><span class="pillar-id">01</span> YOUNG REVIVALIST ACADEMY</div>
+                <div class="pillar-card"><span class="pillar-id">02</span> EQUIPPING THE STUDENT INITIATIVE</div>
+                <div class="pillar-card"><span class="pillar-id">03</span> APOSTOLIC WORSHIPERS</div>
+                <div class="pillar-card"><span class="pillar-id">04</span> WATCHER CONCLAVE</div>
             </div>
-            <a href="pillars.html">LEARN MORE</a>
+            <div class="pillar-action-row">
+                <a href="pillars.html" class="learn-more-link">LEARN MORE <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
         </section>
 
+        <!-- INTERACTIVE COMMISSIONED MINISTRIES BLOCK -->
         <section class="commission-reveal">
             <div class="reveal-container" id="reveal-trigger">
                 <div class="reveal-header">
                     <h3>COMMISSIONED MINISTRIES</h3>
-                    <div class="reveal-icon"></div>
+                    <div class="reveal-icon-box">
+                        <i class="fa-solid fa-chevron-down chevron-toggle"></i>
+                    </div>
                 </div>
                 <div class="reveal-content" id="reveal-list">
-                    <div class="ministry-grid">
-                        <span>1.Intercessors Community Network</span>
-                        <span>2.Mind Of Christ Global</span>
-                        <span>3.Blackspot Foundation</span>
-                        <span>4.The Power Tribe</span>
-                        <span>5.Kingdom Revivalist Network</span>
-                        <span>6.The Excellent Ladies</span>
+                    <div class="reveal-content-inner">
+                        <div class="ministry-grid">
+                            <div class="ministry-item"><span class="min-num">1.</span> Intercessors Community Network</div>
+                            <div class="ministry-item"><span class="min-num">2.</span> Mind Of Christ Global</div>
+                            <div class="ministry-item"><span class="min-num">3.</span> Blackspot Foundation</div>
+                            <div class="ministry-item"><span class="min-num">4.</span> The Power Tribe</div>
+                            <div class="ministry-item"><span class="min-num">5.</span> Kingdom Revivalist Network</div>
+                            <div class="ministry-item"><span class="min-num">6.</span> The Excellent Ladies</div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <a href="ministry.html">CONNECT WITH OUR COMMISSIONED MINISTRIES</a>
+            <div class="reveal-footer-action">
+                <a href="ministry.html" class="connect-ministries-btn">CONNECT WITH OUR COMMISSIONED MINISTRIES</a>
+            </div>
         </section>
 
     </main>
 
-
+    <!-- INLINE CORES TRIGGER LOGIC (UNTOUCHED ACTION TARGETS) -->
     <script>
         const trigger = document.getElementById('reveal-trigger');
         const list = document.getElementById('reveal-list');
