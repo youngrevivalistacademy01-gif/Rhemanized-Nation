@@ -1,123 +1,406 @@
+/* ==========================================================================
+   RESET & SYSTEM VARIABLE DECLARATIONS
+   ========================================================================== */
 :root {
-    --white: #ffffff;
-    --peach-bg: #fff5f0;
-    --peach-accent: #ff9a7b;
-    --black: #000000;
-    --text-dark: #1a1a1a;
-    --text-grey: #666666;
-    --border: rgba(0, 0, 0, 0.06);
+    --bg-main: #ffffff;
+    --bg-slate: #f8f9fa;
+    --border-clean: #e4e4e7;
+    --text-dark: #09090b;
+    --text-slate: #52525b;
+    --font-clean: 'Plus Jakarta Sans', sans-serif;
+    --speed-fluid: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 body {
-    background-color: var(--white);
+    font-family: var(--font-clean);
+    background-color: var(--bg-main);
     color: var(--text-dark);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
 }
 
-/* Nav Styling */
-.pillar-nav {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 20px 8%; position: fixed; width: 100%; top: 0;
-    background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(15px); z-index: 1000;
-    border-bottom: 1px solid var(--border);
+/* Base Structural Grid Mesh Backplane */
+.bg-gradient-layers {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    background-color: var(--bg-main);
 }
-.logo { font-weight: 800; font-size: 1rem; letter-spacing: -0.5px; }
-.logo span { color: var(--peach-accent); font-weight: 400; }
-.nav-links a { text-decoration: none; color: var(--text-dark); font-size: 0.75rem; font-weight: 700; margin-left: 25px; letter-spacing: 1px; }
 
-/* Section Logic */
-.pillar-section {
+.grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(9, 9, 11, 0.012) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(9, 9, 11, 0.012) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+/* ==========================================================================
+   DASHBOARD SPLIT-FRAME VIEW LAYOUT
+   ========================================================================== */
+.pillars-layout-canvas {
+    display: grid;
+    grid-template-columns: 320px 1fr;
     min-height: 100vh;
-    padding: 140px 8% 80px;
+}
+
+/* ==========================================================================
+   SIDEBAR ENGINE CONTROLS
+   ========================================================================== */
+.pillars-sidebar {
+    background-color: #ffffff;
+    border-right: 1px solid var(--border-clean);
+    padding: 50px 30px;
     display: flex;
-    position: relative;
-    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    gap: 60px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
 }
 
-/* Peach/White alternating logic to keep it fresh */
-.etsi-theme { background: var(--white); }
-.iwc-theme { background: var(--peach-bg); }
-.worship-theme { background: var(--white); }
-
-/* Side Vertical Label */
-.side-label {
-    position: absolute; left: 3%; top: 140px;
-    writing-mode: vertical-rl; transform: rotate(180deg);
-    font-size: 0.7rem; font-weight: 800; color: var(--peach-accent);
-    letter-spacing: 5px; opacity: 0.5;
+.sidebar-brand-block .back-home-link {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-slate);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 24px;
+    transition: color 0.2s ease;
 }
 
-.content-wrap { max-width: 900px; width: 100%; margin-left: 50px; }
-
-.eyebrow { font-size: 0.75rem; font-weight: 800; color: var(--peach-accent); letter-spacing: 3px; display: block; margin-bottom: 15px; }
-
-h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 25px; }
-.italic-serif { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 800; color: var(--text-dark); }
-
-.lead { font-size: 1.2rem; color: var(--text-grey); max-width: 600px; margin-bottom: 50px; }
-
-/* Feature Grid (ETSI) */
-.feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 60px; }
-.feature-box { padding: 20px 0; }
-.line-icon { width: 30px; height: 2px; background: var(--peach-accent); margin-bottom: 15px; }
-.feature-box h3 { font-size: 0.9rem; font-weight: 800; margin-bottom: 10px; }
-.feature-box p { font-size: 0.85rem; color: var(--text-grey); line-height: 1.5; }
-
-/* Buttons (Using the Black Authority) */
-.cta-group { display: flex; gap: 15px; }
-.btn-main { 
-    background: var(--black); color: var(--white); text-decoration: none;
-    padding: 18px 30px; border-radius: 12px; font-weight: 800; font-size: 0.8rem; transition: 0.3s;
-}
-.btn-outline { 
-    border: 1px solid var(--black); color: var(--black); text-decoration: none;
-    padding: 18px 30px; border-radius: 12px; font-weight: 800; font-size: 0.8rem;
+.sidebar-brand-block .back-home-link:hover {
+    color: var(--text-dark);
 }
 
-/* Event Cards (IWC) */
-.event-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.event-card { 
-    background: var(--black); color: var(--white); padding: 40px; border-radius: 20px; 
-    transition: 0.4s; cursor: pointer;
+.sidebar-brand-block h2 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--text-dark);
 }
-.event-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
-.event-type { color: var(--peach-accent); font-size: 0.65rem; font-weight: 800; letter-spacing: 2px; margin-bottom: 15px; display: block; }
-.event-card h3 { font-size: 1.4rem; margin-bottom: 15px; }
-.event-card p { font-size: 0.9rem; color: #999; }
 
-/* Streaming Grid (Worship) */
-.streaming-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-.stream-link { 
-    display: flex; align-items: center; justify-content: center; gap: 10px;
-    background: var(--white); border: 1px solid var(--border); padding: 25px;
-    border-radius: 15px; text-decoration: none; color: var(--text-dark);
-    font-weight: 800; font-size: 0.8rem; transition: 0.3s;
+/* Control Row Item Architecture */
+.pillar-tab-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
-.stream-link:hover { background: var(--black); color: var(--white); border-color: var(--black); }
-.stream-link i { font-size: 1.2rem; }
 
-/* Footer */
-.footer-dark { background: var(--black); color: var(--white); padding: 40px; text-align: center; font-size: 0.7rem; letter-spacing: 3px; }
+.tab-control-btn {
+    width: 100%;
+    background: none;
+    border: 1px solid transparent;
+    padding: 16px 20px;
+    border-radius: 12px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    transition: all 0.3s var(--speed-fluid);
+}
 
-/* --- MOBILE OPTIMIZATION (THE "CLOGGED" FIX) --- */
-@media (max-width: 850px) {
-    .pillar-nav { padding: 15px 5%; }
-    .nav-links { display: none; } /* Keeping it clean on mobile */
-    
-    .pillar-section { padding: 120px 6% 60px; min-height: auto; }
-    .side-label { display: none; }
-    .content-wrap { margin-left: 0; }
-    
-    h1 { font-size: 2.5rem; }
-    
-    .feature-grid { grid-template-columns: 1fr; gap: 40px; } /* Stack features for readability */
-    
-    .cta-group { flex-direction: column; }
-    .btn-main, .btn-outline { width: 100%; text-align: center; }
-    
-    .event-cards { grid-template-columns: 1fr; }
-    .streaming-grid { grid-template-columns: 1fr; }
+.tab-control-btn .control-num {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-slate);
+    opacity: 0.6;
+}
+
+.tab-control-btn .control-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-slate);
+}
+
+/* Button Focus Active Modifiers */
+.tab-control-btn:hover {
+    background-color: var(--bg-slate);
+}
+
+.tab-control-btn.active {
+    background-color: var(--text-dark);
+    border-color: var(--text-dark);
+}
+
+.tab-control-btn.active .control-num {
+    color: #ffffff;
+    opacity: 0.9;
+}
+
+.tab-control-btn.active .control-label {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   MAIN DYNAMIC VIEWPORT DISPLAY
+   ========================================================================== */
+.pillars-viewport-content {
+    padding: 80px 100px;
+    display: flex;
+    align-items: center;
+}
+
+/* Absolute Hidden/Show Display Mechanics */
+.pillar-display-panel {
+    display: none;
+    width: 100%;
+    max-width: 800px;
+    animation: fadeMount 0.45s var(--speed-fluid) forwards;
+}
+
+.pillar-display-panel.active {
+    display: block;
+}
+
+@keyframes fadeMount {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Display Header Block Architecture */
+.panel-header-block {
+    margin-bottom: 50px;
+}
+
+.panel-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--text-slate);
+    display: block;
+    margin-bottom: 14px;
+}
+
+.panel-header-block h1 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+}
+
+.panel-lead-desc {
+    font-size: 1.1rem;
+    color: var(--text-slate);
+    line-height: 1.65;
+    font-weight: 400;
+}
+
+/* ==========================================================================
+   INTERNAL PANEL LAYOUTS (CLEAN ELEMENT STRUCTURES)
+   ========================================================================== */
+
+/* 1. Feature Segment: ETSI */
+.feature-layout-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.feature-item-card {
+    background-color: #ffffff;
+    border: 1px solid var(--border-clean);
+    border-radius: 12px;
+    padding: 30px 24px;
+}
+
+.indicator-line {
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-dark);
+    margin-bottom: 20px;
+}
+
+.feature-item-card h3 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+.feature-item-card p {
+    font-size: 0.85rem;
+    color: var(--text-slate);
+    line-height: 1.5;
+}
+
+.action-buttons-group {
+    display: flex;
+    gap: 16px;
+}
+
+.btn-primary-solid {
+    background-color: var(--text-dark);
+    color: #ffffff;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: opacity 0.2s ease;
+}
+
+.btn-secondary-outline {
+    border: 1px solid var(--border-clean);
+    color: var(--text-dark);
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: background-color 0.2s ease;
+}
+
+.btn-primary-solid:hover { opacity: 0.9; }
+.btn-secondary-outline:hover { background-color: var(--bg-slate); }
+
+/* 2. Events Segment: IWC */
+.events-split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.event-capsule-card {
+    background-color: var(--bg-slate);
+    border-radius: 14px;
+    padding: 35px;
+}
+
+.capsule-mini-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--text-slate);
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 16px;
+}
+
+.event-capsule-card h3 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+}
+
+.event-capsule-card p {
+    font-size: 0.9rem;
+    color: var(--text-slate);
+    line-height: 1.5;
+}
+
+/* 3. Streaming System Integration Dashboard: Worship */
+.streaming-links-dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.streaming-platform-pill {
+    background-color: #ffffff;
+    border: 1px solid var(--border-clean);
+    border-radius: 12px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: all 0.2s var(--speed-fluid);
+}
+
+.streaming-platform-pill i {
+    font-size: 1.1rem;
+}
+
+.streaming-platform-pill:hover {
+    border-color: var(--text-dark);
+    background-color: var(--bg-slate);
+    transform: translateY(-1px);
+}
+
+/* Inline Brand Icon Coloring Rules */
+.icon-yt { color: #ff0000; }
+.icon-apple { color: #000000; }
+.icon-audio { color: #ff8c00; }
+
+/* 4. Academy Standby State Styling */
+.empty-state-info {
+    border: 1px dashed var(--border-clean);
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.empty-state-info p {
+    font-size: 0.9rem;
+    color: var(--text-slate);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   RESPONSIVE LAYOUT BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .pillars-layout-canvas {
+        grid-template-columns: 1fr; /* Stack sidebar on top on tablet/mobile views */
+    }
+    .pillars-sidebar {
+        height: auto;
+        position: relative;
+        padding: 40px 24px;
+        gap: 30px;
+        border-right: none;
+        border-bottom: 1px solid var(--border-clean);
+    }
+    .pillar-tab-controls {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        -webkit-overflow-scrolling: touch;
+    }
+    .tab-control-btn {
+        white-space: nowrap;
+        width: auto;
+        padding: 12px 20px;
+    }
+    .pillars-viewport-content {
+        padding: 60px 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .feature-layout-grid, 
+    .events-split-layout, 
+    .streaming-links-dashboard {
+        grid-template-columns: 1fr;
+    }
+    .action-buttons-group {
+        flex-direction: column;
+    }
+    .btn-primary-solid, 
+    .btn-secondary-outline {
+        text-align: center;
+    }
 }
