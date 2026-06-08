@@ -1,123 +1,440 @@
+/* ==========================================================================
+   RESET & Light STRUCTURAL VARIABLES
+   ========================================================================== */
 :root {
-    --peach: #ff9a7b;
-    --soft-peach: #fff5f0;
-    --white: #ffffff;
-    --black: #000000;
-    --text-dark: #1a1a1a;
-    --text-grey: #666666;
-    --border: rgba(0,0,0,0.08);
+    --bg-main: #ffffff;
+    --bg-slate: #f8f9fa;
+    --border-clean: #e4e4e7;
+    --text-dark: #09090b;
+    --text-slate: #52525b;
+    --font-clean: 'Plus Jakarta Sans', sans-serif;
+    --speed-fluid: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-body {
-    background: var(--white);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    background-color: var(--bg-main);
+    font-family: var(--font-clean);
+    color: var(--text-dark);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Base Structural Grid Mesh Backplane */
+.bg-gradient-layers {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    background-color: var(--bg-main);
+    pointer-events: none;
+}
+
+.grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(9, 9, 11, 0.012) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(9, 9, 11, 0.012) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+/* ==========================================================================
+   MOBILE-OPTIMIZED NAVIGATION HEADER
+   ========================================================================== */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 6%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-clean);
+    position: relative;
+    z-index: 10;
+    gap: 20px;
+}
+
+.main-header .brand {
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    color: var(--text-dark);
+    white-space: nowrap;
+}
+
+.main-header .main-nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.main-header .main-nav a {
+    text-decoration: none;
+    color: var(--text-slate);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+}
+
+.main-header .main-nav a:hover {
     color: var(--text-dark);
 }
 
-/* Header */
-.main-header {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 25px 8%; background: var(--white);
-    border-bottom: 1px solid var(--border);
-    position: sticky; top: 0; z-index: 1000;
+/* ==========================================================================
+   MAIN VIEWPORT CONTAINER FRAMEWORK
+   ========================================================================== */
+.events-flow {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 4% 100px 4%;
+    width: 100%;
 }
-.brand { font-weight: 800; font-size: 0.9rem; letter-spacing: 1px; }
-.main-nav a { text-decoration: none; color: var(--text-dark); font-size: 0.8rem; font-weight: 700; margin-left: 25px; }
 
-/* Hero */
+/* Hero Section Typography Rules */
 .events-hero {
-    padding: 100px 8% 80px;
     text-align: center;
-    background: linear-gradient(to bottom, var(--white), var(--soft-peach));
+    max-width: 650px;
+    margin: 0 auto 80px auto;
 }
-.eyebrow { font-size: 0.7rem; font-weight: 800; letter-spacing: 3px; color: var(--peach); display: block; margin-bottom: 15px; }
-h1 { font-size: clamp(2.5rem, 7vw, 4.5rem); font-weight: 800; line-height: 1; margin-bottom: 20px; }
-.serif-italic { font-family: 'Playfair Display', serif; font-style: italic; color: var(--peach); }
-.events-hero p { max-width: 600px; margin: 0 auto; color: var(--text-grey); font-size: 1.1rem; }
 
-/* Event Strips - The "Anti-Clog" Layout */
-.signature-events { padding: 40px 8%; }
+.events-hero .eyebrow {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--text-slate);
+    display: block;
+    margin-bottom: 16px;
+}
 
-.event-strip {
+.events-hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+}
+
+.events-hero .hero-sub {
+    font-size: 1.05rem;
+    color: var(--text-slate);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   PREMIUM SIGNATURE EVEN ASYMMETRIC STRIPS
+   ========================================================================== */
+.signature-events {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 60px;
     margin-bottom: 100px;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
 }
 
-.event-strip.alternate { flex-direction: row-reverse; }
-
-.event-image {
-    flex: 1;
-    height: 450px;
+.event-strip {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    background-color: #ffffff;
+    border: 1px solid var(--border-clean);
+    border-radius: 24px;
     overflow: hidden;
-    border-radius: 20px;
+    transition: transform 0.3s var(--speed-fluid), box-shadow 0.3s var(--speed-fluid);
+    width: 100%;
+}
+
+.event-strip:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 30px 60px rgba(9, 9, 11, 0.04);
+}
+
+/* Alternating flip alignment rules for desktop grids */
+.event-strip.alternate {
+    grid-template-columns: 1fr 1.1fr;
+}
+
+.event-strip.alternate .event-image {
+    order: 2;
+}
+
+.event-strip.alternate .event-content {
+    order: 1;
+}
+
+/* Image Core Display Canvas */
+.event-image {
+    width: 100%;
+    aspect-ratio: 16 / 11;
+    overflow: hidden;
+    background-color: var(--bg-slate);
 }
 
 .event-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.8s ease;
+    transition: transform 0.6s var(--speed-fluid);
 }
 
-.event-strip:hover .event-image img { transform: scale(1.05); }
-
-.event-content { flex: 1; }
-
-.event-type { font-size: 0.65rem; font-weight: 800; letter-spacing: 2px; color: var(--peach); display: block; margin-bottom: 15px; }
-.event-content h2 { font-size: 2.5rem; margin-bottom: 15px; line-height: 1.1; }
-.event-meta { font-size: 0.8rem; font-weight: 800; color: var(--text-grey); margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; display: inline-block; }
-.event-description { font-size: 1rem; color: var(--text-grey); line-height: 1.8; }
-
-/* Weekly Rhythm Section */
-.schedule-section {
-    background: var(--black);
-    color: var(--white);
-    padding: 100px 8%;
+.event-strip:hover .event-image img {
+    transform: scale(1.02);
 }
 
-.schedule-container { max-width: 1000px; margin: 0 auto; }
-.schedule-header h3 { font-size: 0.7rem; letter-spacing: 4px; color: var(--peach); margin-bottom: 50px; text-align: center; }
+/* Content Core Text Alignment Mapping */
+.event-content {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
 
-.schedule-box { border-top: 1px solid rgba(255,255,255,0.1); }
+.event-type {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: var(--text-slate);
+    background-color: var(--bg-slate);
+    padding: 6px 14px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+}
 
-.schedule-item {
-    display: grid;
-    grid-template-columns: 100px 1fr 150px;
+.event-content h2 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 12px;
+}
+
+.event-meta {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-slate);
+    letter-spacing: 0.05em;
+    margin-bottom: 24px;
+    display: flex;
     align-items: center;
-    padding: 30px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    gap: 8px;
 }
 
-.day { font-size: 0.7rem; font-weight: 800; opacity: 0.5; }
-.item-details h4 { font-size: 1.2rem; margin-bottom: 5px; }
-.item-details p { font-size: 0.9rem; opacity: 0.6; }
-.time { font-size: 0.9rem; font-weight: 800; text-align: right; color: var(--peach); }
+.event-meta i {
+    font-size: 0.75rem;
+    opacity: 0.7;
+}
 
-/* MOBILE (Un-clogged Fixes) */
-@media (max-width: 968px) {
-    .event-strip, .event-strip.alternate { flex-direction: column; gap: 30px; text-align: center; }
+.event-description {
+    font-size: 0.95rem;
+    color: var(--text-slate);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   TABULAR ITINERARY TIMELINE MODULE
+   ========================================================================== */
+.schedule-section {
+    width: 100%;
+    background-color: var(--bg-slate);
+    border: 1px solid var(--border-clean);
+    border-radius: 24px;
+    padding: 60px;
+}
+
+.schedule-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.schedule-header {
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.schedule-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-slate);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.schedule-header h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+}
+
+.schedule-box {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border: 1px solid var(--border-clean);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+/* Itinerary Row Flex Framework rules */
+.schedule-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 40px;
+    border-bottom: 1px solid var(--border-clean);
+    gap: 30px;
+}
+
+.schedule-item:last-child {
+    border-bottom: none;
+}
+
+.item-tag-zone {
+    flex-shrink: 0;
+}
+
+.schedule-item .day {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text-slate);
+    border: 1px solid var(--border-clean);
+    padding: 6px 14px;
+    border-radius: 6px;
+}
+
+.item-details {
+    flex-grow: 1;
+}
+
+.item-details h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+}
+
+.item-details p {
+    font-size: 0.9rem;
+    color: var(--text-slate);
+}
+
+.item-time-zone {
+    flex-shrink: 0;
+    text-align: right;
+}
+
+.schedule-item .time {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.schedule-item .time i {
+    font-size: 0.8rem;
+    color: var(--text-slate);
+}
+
+/* ==========================================================================
+   MINIMAL SYSTEM FOOTER MODULE
+   ========================================================================== */
+.event-footer {
+    padding: 60px 4% 40px 4%;
+    text-align: center;
+    border-top: 1px solid var(--border-clean);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.event-footer p {
+    font-size: 0.75rem;
+    color: var(--text-slate);
+    letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   METICULOUS QUALITY RESPONSIVE BREAKPOINT LOCKS
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .event-strip, .event-strip.alternate {
+        grid-template-columns: 1fr; /* Strip switches off multi columns for cleaner flow */
+    }
+    
+    .event-strip.alternate .event-image {
+        order: 0;
+    }
+    
+    .event-strip.alternate .event-content {
+        order: 0;
+    }
     
     .event-image {
-        width: 100%;
-        height: 300px; /* Force image to stay small on mobile */
+        aspect-ratio: 16 / 9;
     }
-
-    .event-content h2 { font-size: 1.8rem; }
-    .event-meta { display: block; }
-
-    .schedule-item {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 15px;
+    
+    .event-content {
+        padding: 40px 30px;
     }
-    .time { text-align: center; }
+    
+    .schedule-section {
+        padding: 40px 24px;
+    }
 }
 
-.event-footer { padding: 60px; text-align: center; font-size: 0.8rem; color: var(--text-grey); background: var(--white); }
+@media (max-width: 768px) {
+    /* Complete Mobile Header Sync Re-architecture */
+    .main-header {
+        flex-direction: column;
+        padding: 24px 20px;
+        gap: 16px;
+        text-align: center;
+    }
+    
+    .main-header .brand {
+        font-size: 1rem;
+        letter-spacing: 0.1em;
+    }
+    
+    .main-header .main-nav {
+        width: 100%;
+        justify-content: center;
+        gap: 24px;
+    }
+
+    .events-flow {
+        padding: 60px 20px 80px 20px;
+    }
+    
+    .events-hero h1 {
+        font-size: 2.1rem;
+    }
+    
+    .event-content h2 {
+        font-size: 1.4rem;
+    }
+    
+    /* Re-align Row Modules into cleanly stacked mobile streams */
+    .schedule-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 30px 24px;
+        gap: 16px;
+    }
+    
+    .item-time-zone {
+        text-align: left;
+        padding-top: 4px;
+    }
+}
