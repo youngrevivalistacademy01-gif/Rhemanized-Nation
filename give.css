@@ -7,7 +7,8 @@
     --border-clean: #e4e4e7;
     --text-dark: #09090b;
     --text-slate: #52525b;
-    --accent-glow: #18181b;
+    --premium-green-light: #e6f4ea;
+    --premium-green-text: #137333;
     --font-clean: 'Plus Jakarta Sans', sans-serif;
     --speed-fluid: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -46,39 +47,37 @@ html, body {
 }
 
 /* ==========================================================================
-   LUXURY MINIMAL NAVIGATION HEADER
+   HEADER MANAGEMENT ENGINES (MOBILE OPTIMIZED)
    ========================================================================== */
-.luxury-nav-header {
+.main-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 8%;
+    padding: 30px 6%;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-clean);
     position: relative;
     z-index: 10;
+    gap: 20px;
 }
 
-.luxury-nav-header .brand {
+.main-header .brand {
     font-size: 0.95rem;
     font-weight: 800;
     letter-spacing: 0.12em;
     color: var(--text-dark);
+    white-space: nowrap;
 }
 
-.luxury-nav-header .brand span {
-    font-weight: 300;
-    color: var(--text-slate);
-}
-
-.luxury-nav-header .main-nav {
+.main-header .main-nav {
     display: flex;
-    gap: 24px;
+    align-items: center;
+    gap: 28px;
 }
 
-.luxury-nav-header .main-nav a {
+.main-header .main-nav a {
     text-decoration: none;
     color: var(--text-slate);
     font-size: 0.75rem;
@@ -88,7 +87,7 @@ html, body {
     transition: color 0.2s ease;
 }
 
-.luxury-nav-header .main-nav a:hover {
+.main-header .main-nav a:hover {
     color: var(--text-dark);
 }
 
@@ -102,10 +101,9 @@ html, body {
     width: 100%;
 }
 
-/* Hero Section Branding Typography */
 .give-hero {
     text-align: center;
-    max-width: 700px;
+    max-width: 650px;
     margin: 0 auto 60px auto;
 }
 
@@ -128,14 +126,13 @@ html, body {
 }
 
 .give-hero .hero-sub {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     color: var(--text-slate);
     line-height: 1.6;
-    font-weight: 400;
 }
 
 /* ==========================================================================
-   METHODS INTERACTIVE MODULE GRID
+   UNIFORM LIGHT METHODS DISPLAY GRID
    ========================================================================== */
 .methods-grid {
     display: grid;
@@ -162,13 +159,6 @@ html, body {
     box-shadow: 0 20px 40px rgba(9, 9, 11, 0.03);
 }
 
-/* Premium Dark Variant Option Module styling */
-.method-card.dark-accent {
-    background-color: var(--accent-glow);
-    border-color: var(--accent-glow);
-    color: #ffffff;
-}
-
 .card-header {
     margin-bottom: 35px;
 }
@@ -182,17 +172,13 @@ html, body {
     margin-bottom: 8px;
 }
 
-.dark-accent .method-tag {
-    color: rgba(255, 255, 255, 0.4);
-}
-
 .card-header h3 {
     font-size: 1.4rem;
     font-weight: 800;
     letter-spacing: -0.01em;
 }
 
-/* Meta Tabular Account Fields Blueprint */
+/* Tabular Account Component Rules */
 .data-table {
     display: flex;
     flex-direction: column;
@@ -230,12 +216,11 @@ html, body {
     word-break: break-word;
 }
 
-/* Click-to-copy internal UI element wrapper alignment */
 .account-copy-container {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    max-width: 70%;
+    max-width: 75%;
     justify-content: flex-end;
 }
 
@@ -260,11 +245,11 @@ html, body {
     color: var(--text-dark);
 }
 
+/* Precise Less-Dominant Accent Green Micro-Feedback Indicators */
 .text-success {
-    color: #10b981 !important;
+    color: var(--premium-green-text) !important;
 }
 
-/* Primary Form Controls Engine Elements */
 .action-btn {
     width: 100%;
     background-color: var(--text-dark);
@@ -277,7 +262,7 @@ html, body {
     font-weight: 700;
     letter-spacing: 0.05em;
     cursor: pointer;
-    transition: opacity 0.15s ease;
+    transition: all 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -288,7 +273,14 @@ html, body {
     opacity: 0.9;
 }
 
-/* Gateway Form Container Blocks */
+.action-btn.success-state {
+    background-color: var(--premium-green-light) !important;
+    color: var(--premium-green-text) !important;
+}
+
+/* ==========================================================================
+   OPTION 02 COMPONENT INTERNAL FORM CONTROLS
+   ========================================================================== */
 .payment-selection {
     display: flex;
     flex-direction: column;
@@ -307,7 +299,7 @@ html, body {
     font-size: 0.65rem;
     font-weight: 700;
     letter-spacing: 0.08em;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--text-slate);
 }
 
 .select-wrapper {
@@ -317,23 +309,23 @@ html, body {
 
 .styled-select {
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #ffffff;
+    background-color: var(--bg-slate);
+    border: 1px solid var(--border-clean);
+    color: var(--text-dark);
     padding: 16px 45px 16px 20px;
     border-radius: 10px;
     font-family: var(--font-clean);
     font-size: 0.9rem;
-    font-weight: 500;
+    font-weight: 600;
     outline: none;
     cursor: pointer;
-    appearance: none; /* Strip core system standard arrows safely */
+    appearance: none;
     -webkit-appearance: none;
     transition: border-color 0.2s ease;
 }
 
 .styled-select:focus {
-    border-color: rgba(255, 255, 255, 0.3);
+    border-color: var(--text-dark);
 }
 
 .select-arrow-icon {
@@ -341,12 +333,11 @@ html, body {
     right: 20px;
     top: 50%;
     transform: translateY(-50%);
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--text-slate);
     font-size: 0.8rem;
     pointer-events: none;
 }
 
-/* Vertical Button Stack Row Maps */
 .button-stack {
     display: flex;
     flex-direction: column;
@@ -363,41 +354,32 @@ html, body {
     text-decoration: none;
     letter-spacing: 0.05em;
     text-align: center;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-.gate-inner {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.gate-link i {
-    font-size: 0.7rem;
-    opacity: 0.6;
+    display: block;
+    transition: all 0.2s ease;
 }
 
 .gate-link.paystack {
-    background-color: #ffffff;
-    color: var(--text-dark);
-}
-
-.gate-link.flutterwave {
-    background-color: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--text-dark);
     color: #ffffff;
 }
 
+.gate-link.flutterwave {
+    background-color: #ffffff;
+    border: 1px solid var(--border-clean);
+    color: var(--text-dark);
+}
+
 .gate-link.paystack:hover {
-    background-color: var(--bg-slate);
+    opacity: 0.9;
 }
 
 .gate-link.flutterwave:hover {
-    background-color: rgba(255, 255, 255, 0.12);
+    background-color: var(--bg-slate);
+    border-color: var(--text-dark);
 }
 
 /* ==========================================================================
-   MINIMAL METRICS DISPLAY SECTION
+   MINIMAL METRICS SUMMARY MODULE
    ========================================================================== */
 .impact-minimal {
     display: grid;
@@ -432,7 +414,6 @@ html, body {
     font-size: 1.15rem;
     font-weight: 700;
     margin-bottom: 10px;
-    color: var(--text-dark);
 }
 
 .impact-column p {
@@ -442,7 +423,7 @@ html, body {
 }
 
 /* ==========================================================================
-   STRATEGIC CONCIERGE PARTNERSHIP CALLOUT FOOTER
+   STRATEGIC CONCIERGE CALLOUT FOOTER
    ========================================================================== */
 .strategic-footer {
     text-align: center;
@@ -456,7 +437,6 @@ html, body {
     font-weight: 800;
     letter-spacing: -0.02em;
     margin-bottom: 12px;
-    color: var(--text-dark);
 }
 
 .strategic-footer p {
@@ -473,14 +453,9 @@ html, body {
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
     padding-bottom: 2px;
     border-bottom: 2px solid var(--text-dark);
     transition: opacity 0.15s ease;
-}
-
-.inline-link i {
-    font-size: 0.9rem;
 }
 
 .inline-link:hover {
@@ -497,12 +472,23 @@ html, body {
 }
 
 @media (max-width: 768px) {
-    .luxury-nav-header {
-        padding: 20px 24px;
+    /* Complete Mobile Header Re-architecture */
+    .main-header {
+        flex-direction: column;
+        padding: 24px 20px;
+        gap: 16px;
+        text-align: center;
     }
     
-    .luxury-nav-header .main-nav {
-        gap: 16px;
+    .main-header .brand {
+        font-size: 1rem;
+        letter-spacing: 0.1em;
+    }
+    
+    .main-header .main-nav {
+        width: 100%;
+        justify-content: center;
+        gap: 24px;
     }
     
     .give-hero {
@@ -510,14 +496,14 @@ html, body {
     }
     
     .give-hero h1 {
-        font-size: 2rem;
+        font-size: 2.1rem;
     }
     
     .give-hero .hero-sub {
         font-size: 0.95rem;
     }
 
-    /* Force grids cleanly down to 100% single row parameters */
+    /* Collapse form cards smoothly into flawless vertical single columns */
     .methods-grid, .impact-minimal {
         grid-template-columns: 1fr;
         gap: 24px;
@@ -525,7 +511,7 @@ html, body {
     }
     
     .method-card {
-        padding: 30px 20px;
+        padding: 35px 24px;
     }
     
     .account-copy-container {
@@ -533,7 +519,7 @@ html, body {
     }
     
     .data-row .value.accent {
-        font-size: 1rem;
+        font-size: 1.05rem;
     }
     
     .strategic-footer h2 {
