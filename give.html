@@ -2,26 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Invest in Revival | Rhemanized Nation</title>
-    <link href="" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="give.css">
 </head>
 <body>
 
-    <header class="main-header">
-        <div class="brand">RHEMANIZED NATION</div>
+    <div class="bg-gradient-layers">
+        <div class="grid-overlay"></div>
+    </div>
+
+    <header class="luxury-nav-header">
+        <div class="brand">RHEMANIZED <span>NATION</span></div>
         <nav class="main-nav">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
+            <a href="index.html">HOME</a>
+            <a href="about.html">ABOUT</a>
+            <a href="contact.html">CONTACT</a>
         </nav>
     </header>
 
     <main class="give-wrapper">
+        
         <section class="give-hero">
-            <span class="eyebrow">KINGDOM PARTNERSHIP</span>
-            <h1>FUEL THE <span class="serif-italic">FIRE.</span></h1>
+            <span class="eyebrow">// KINGDOM PARTNERSHIP</span>
+            <h1>FUEL THE FIRE.</h1>
             <p class="hero-sub">Partner with us in equipping the next generation of revivalists and advancing the global apostolic mandate.</p>
         </section>
 
@@ -40,7 +47,12 @@
                     </div>
                     <div class="data-row">
                         <span class="label">ACCOUNT NUMBER</span>
-                        <span class="value accent" id="acc-num">7394532011</span>
+                        <div class="account-copy-container">
+                            <span class="value accent" id="acc-num">7394532011</span>
+                            <button class="inline-copy-icon-btn" onclick="copyAccount()" title="Copy Account Number">
+                                <i class="fa-regular fa-copy" id="copy-icon"></i>
+                            </button>
+                        </div>
                     </div>
                     <div class="data-row no-border">
                         <span class="label">ACCOUNT NAME</span>
@@ -49,7 +61,7 @@
                 </div>
                 
                 <button class="action-btn copy-btn" onclick="copyAccount()">
-                    <span id="btn-text">COPY ACCOUNT NUMBER</span>
+                    <span id="btn-text"><i class="fa-solid fa-clone"></i> COPY ACCOUNT NUMBER</span>
                 </button>
             </div>
 
@@ -61,17 +73,24 @@
                 
                 <div class="payment-selection">
                     <div class="input-group">
-                        <label>DESIGNATE YOUR SEED</label>
-                        <select class="styled-select">
-                            <option>Tithe / General Offering</option>
-                            <option>YRA Scholarship Fund</option>
-                            <option>Global Missions</option>
-                        </select>
+                        <label for="seed-designation">DESIGNATE YOUR SEED</label>
+                        <div class="select-wrapper">
+                            <select id="seed-designation" class="styled-select">
+                                <option>Tithe / General Offering</option>
+                                <option>YRA Scholarship Fund</option>
+                                <option>Global Missions</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down select-arrow-icon"></i>
+                        </div>
                     </div>
                     
                     <div class="button-stack">
-                        <a href="#" class="gate-link paystack">PAY VIA PAYSTACK</a>
-                        <a href="#" class="gate-link flutterwave">PAY VIA FLUTTERWAVE</a>
+                        <a href="#" class="gate-link paystack">
+                            <span class="gate-inner">PAY VIA PAYSTACK <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                        </a>
+                        <a href="#" class="gate-link flutterwave">
+                            <span class="gate-inner">PAY VIA FLUTTERWAVE <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -91,9 +110,9 @@
         </section>
 
         <section class="strategic-footer">
-            <h2>FOR STRATEGIC <span class="serif-italic">PARTNERSHIP</span></h2>
+            <h2>FOR STRATEGIC PARTNERSHIP</h2>
             <p>Interested in significant kingdom investment or long-term ministry partnership?</p>
-            <a href="contact.html" class="inline-link">Connect with our team &rarr;</a>
+            <a href="contact.html" class="inline-link">Connect with our team <i class="fa-solid fa-arrow-right-long"></i></a>
         </section>
     </main>
 
@@ -101,13 +120,23 @@
         function copyAccount() {
             const num = document.getElementById('acc-num').innerText;
             navigator.clipboard.writeText(num);
-            const btnText = document.getElementById('btn-text');
-            const originalText = btnText.innerText;
             
-            btnText.innerText = "COPIED TO CLIPBOARD";
+            const btnText = document.getElementById('btn-text');
+            const copyIcon = document.getElementById('copy-icon');
+            const originalText = btnText.innerHTML;
+            
+            // Visual dynamic mutation feedback state
+            btnText.innerHTML = `<i class="fa-solid fa-check"></i> COPIED TO CLIPBOARD`;
+            if (copyIcon) {
+                copyIcon.className = "fa-solid fa-check text-success";
+            }
+            
             setTimeout(() => {
-                btnText.innerText = originalText;
-            }, 2000);
+                btnText.innerHTML = originalText;
+                if (copyIcon) {
+                    copyIcon.className = "fa-regular fa-copy";
+                }
+            }, 2200);
         }
     </script>
 </body>
