@@ -1,123 +1,542 @@
+/* ==========================================================================
+   RESET & SYSTEM VARIABLE DECLARATIONS
+   ========================================================================== */
 :root {
-    --white: #ffffff;
-    --peach-bg: #fff5f0;
-    --peach-accent: #ff9a7b;
-    --black: #000000;
-    --text-dark: #1a1a1a;
-    --text-grey: #666666;
-    --border: rgba(0,0,0,0.08);
+    --bg-main: #ffffff;
+    --bg-slate: #f8f9fa;
+    --border-clean: #e4e4e7;
+    --text-dark: #09090b;
+    --text-slate: #52525b;
+    --accent-glow: #18181b;
+    --font-clean: 'Plus Jakarta Sans', sans-serif;
+    --speed-fluid: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-body {
-    background-color: var(--white);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    background-color: var(--bg-main);
+    font-family: var(--font-clean);
+    color: var(--text-dark);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Base Structural Grid Mesh Backplane */
+.bg-gradient-layers {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    background-color: var(--bg-main);
+    pointer-events: none;
+}
+
+.grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(9, 9, 11, 0.012) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(9, 9, 11, 0.012) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+/* ==========================================================================
+   LUXURY MINIMAL NAVIGATION HEADER
+   ========================================================================== */
+.luxury-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 8%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-clean);
+    position: relative;
+    z-index: 10;
+}
+
+.luxury-nav-header .brand {
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
     color: var(--text-dark);
 }
 
-/* Header */
-.main-header {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 25px 8%; background: var(--white);
-    border-bottom: 1px solid var(--border);
-    position: sticky; top: 0; z-index: 1000;
+.luxury-nav-header .brand span {
+    font-weight: 300;
+    color: var(--text-slate);
 }
-.brand { font-weight: 800; font-size: 0.9rem; letter-spacing: 1px; }
-.main-nav a { text-decoration: none; color: var(--text-dark); font-size: 0.8rem; font-weight: 700; margin-left: 25px; }
 
-/* Hero */
+.luxury-nav-header .main-nav {
+    display: flex;
+    gap: 24px;
+}
+
+.luxury-nav-header .main-nav a {
+    text-decoration: none;
+    color: var(--text-slate);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+}
+
+.luxury-nav-header .main-nav a:hover {
+    color: var(--text-dark);
+}
+
+/* ==========================================================================
+   MAIN VIEWPORT CONTAINER FRAMEWORK
+   ========================================================================== */
+.give-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 4% 100px 4%;
+    width: 100%;
+}
+
+/* Hero Section Branding Typography */
 .give-hero {
-    padding: 100px 8% 60px;
     text-align: center;
-    background: linear-gradient(to bottom, var(--white), var(--peach-bg));
+    max-width: 700px;
+    margin: 0 auto 60px auto;
 }
-.eyebrow { font-size: 0.7rem; font-weight: 800; letter-spacing: 3px; color: var(--peach-accent); display: block; margin-bottom: 15px; }
-h1 { font-size: clamp(2.5rem, 7vw, 4.5rem); font-weight: 800; line-height: 1; margin-bottom: 20px; }
-.serif-italic { font-family: 'Playfair Display', serif; font-style: italic; color: var(--peach-accent); }
-.hero-sub { max-width: 600px; margin: 0 auto; color: var(--text-grey); font-size: 1.1rem; }
 
-/* Methods Grid */
+.give-hero .eyebrow {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--text-slate);
+    display: block;
+    margin-bottom: 16px;
+}
+
+.give-hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+}
+
+.give-hero .hero-sub {
+    font-size: 1.1rem;
+    color: var(--text-slate);
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* ==========================================================================
+   METHODS INTERACTIVE MODULE GRID
+   ========================================================================== */
 .methods-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    padding: 0 8% 80px;
-    margin-top: -30px; /* Slight overlap for modern look */
+    gap: 32px;
+    margin-bottom: 80px;
+    width: 100%;
 }
 
 .method-card {
-    background: var(--white);
-    padding: 40px;
-    border-radius: 30px;
-    border: 1px solid var(--border);
+    background-color: #ffffff;
+    border: 1px solid var(--border-clean);
+    border-radius: 20px;
+    padding: 45px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: transform 0.3s var(--speed-fluid), box-shadow 0.3s var(--speed-fluid);
+    width: 100%;
 }
 
-/* THE BLACK CARD (Option 02) */
+.method-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(9, 9, 11, 0.03);
+}
+
+/* Premium Dark Variant Option Module styling */
 .method-card.dark-accent {
-    background: var(--black);
-    color: var(--white);
-    border: none;
+    background-color: var(--accent-glow);
+    border-color: var(--accent-glow);
+    color: #ffffff;
 }
 
-.method-tag { font-size: 0.65rem; font-weight: 800; letter-spacing: 2px; color: var(--peach-accent); display: block; margin-bottom: 10px; }
-.method-card h3 { font-size: 1.5rem; margin-bottom: 30px; }
+.card-header {
+    margin-bottom: 35px;
+}
 
-/* Bank Data Table */
-.data-table { margin-bottom: 30px; }
+.method-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-slate);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.dark-accent .method-tag {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.card-header h3 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+}
+
+/* Meta Tabular Account Fields Blueprint */
+.data-table {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 35px;
+    width: 100%;
+}
+
 .data-row {
-    display: flex; justify-content: space-between;
-    padding: 15px 0; border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border-clean);
+    gap: 16px;
 }
-.data-row.no-border { border: none; }
-.label { font-size: 0.7rem; font-weight: 800; color: var(--text-grey); }
-.value { font-size: 0.95rem; font-weight: 700; }
-.value.accent { color: var(--peach-accent); font-size: 1.2rem; }
 
-/* Buttons */
+.data-row.no-border {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.data-row .label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-slate);
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+}
+
+.data-row .value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: right;
+    color: var(--text-dark);
+    word-break: break-word;
+}
+
+/* Click-to-copy internal UI element wrapper alignment */
+.account-copy-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 70%;
+    justify-content: flex-end;
+}
+
+.data-row .value.accent {
+    font-family: monospace;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.inline-copy-icon-btn {
+    background: none;
+    border: none;
+    color: var(--text-slate);
+    cursor: pointer;
+    font-size: 0.95rem;
+    padding: 4px;
+    transition: color 0.15s ease;
+}
+
+.inline-copy-icon-btn:hover {
+    color: var(--text-dark);
+}
+
+.text-success {
+    color: #10b981 !important;
+}
+
+/* Primary Form Controls Engine Elements */
 .action-btn {
-    background: var(--black); color: white; border: none;
-    padding: 18px; border-radius: 12px; font-weight: 800;
-    cursor: pointer; transition: 0.3s; width: 100%;
+    width: 100%;
+    background-color: var(--text-dark);
+    color: #ffffff;
+    border: none;
+    padding: 16px 24px;
+    border-radius: 10px;
+    font-family: var(--font-clean);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
-.action-btn:hover { background: var(--peach-accent); }
 
-/* Payment Selection - Option 02 Internal */
+.action-btn:hover {
+    opacity: 0.9;
+}
+
+/* Gateway Form Container Blocks */
+.payment-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.input-group label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
 .styled-select {
-    width: 100%; padding: 15px; background: #222; border: 1px solid #333;
-    color: white; border-radius: 10px; margin: 15px 0 30px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    padding: 16px 45px 16px 20px;
+    border-radius: 10px;
+    font-family: var(--font-clean);
+    font-size: 0.9rem;
+    font-weight: 500;
+    outline: none;
+    cursor: pointer;
+    appearance: none; /* Strip core system standard arrows safely */
+    -webkit-appearance: none;
+    transition: border-color 0.2s ease;
 }
+
+.styled-select:focus {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.select-arrow-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.8rem;
+    pointer-events: none;
+}
+
+/* Vertical Button Stack Row Maps */
+.button-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
 .gate-link {
-    display: block; text-align: center; text-decoration: none;
-    padding: 15px; border-radius: 10px; font-weight: 800; font-size: 0.8rem;
-    margin-bottom: 10px; transition: 0.3s;
+    width: 100%;
+    padding: 16px 24px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-align: center;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
-.paystack { background: #011b33; color: #00d2ff; }
-.flutterwave { background: #ff9a00; color: #fff; }
 
-/* Impact Section */
+.gate-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.gate-link i {
+    font-size: 0.7rem;
+    opacity: 0.6;
+}
+
+.gate-link.paystack {
+    background-color: #ffffff;
+    color: var(--text-dark);
+}
+
+.gate-link.flutterwave {
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.gate-link.paystack:hover {
+    background-color: var(--bg-slate);
+}
+
+.gate-link.flutterwave:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* ==========================================================================
+   MINIMAL METRICS DISPLAY SECTION
+   ========================================================================== */
 .impact-minimal {
-    display: flex; gap: 50px; padding: 80px 8%; background: var(--peach-bg);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 60px 0;
+    border-top: 1px solid var(--border-clean);
+    border-bottom: 1px solid var(--border-clean);
+    margin-bottom: 60px;
+    width: 100%;
 }
-.stat-num { font-size: 2.5rem; font-weight: 800; color: var(--peach-accent); opacity: 0.3; }
-.impact-column h4 { margin: 10px 0; font-size: 1.2rem; }
-.impact-column p { color: var(--text-grey); font-size: 0.9rem; }
 
-/* Strategic Footer */
+.impact-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.stat-num {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    background-color: var(--bg-slate);
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin-bottom: 18px;
+    letter-spacing: 0.05em;
+}
+
+.impact-column h4 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.impact-column p {
+    font-size: 0.9rem;
+    color: var(--text-slate);
+    line-height: 1.55;
+}
+
+/* ==========================================================================
+   STRATEGIC CONCIERGE PARTNERSHIP CALLOUT FOOTER
+   ========================================================================== */
 .strategic-footer {
-    padding: 100px 8%; text-align: center;
+    text-align: center;
+    padding: 40px 20px;
+    max-width: 600px;
+    margin: 0 auto;
 }
-.strategic-footer h2 { font-size: 2.5rem; margin-bottom: 20px; }
-.inline-link { font-weight: 800; color: var(--black); text-decoration: none; border-bottom: 2px solid var(--peach-accent); }
 
-/* MOBILE (Un-clogged) */
+.strategic-footer h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+}
+
+.strategic-footer p {
+    font-size: 0.95rem;
+    color: var(--text-slate);
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+
+.inline-link {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 2px;
+    border-bottom: 2px solid var(--text-dark);
+    transition: opacity 0.15s ease;
+}
+
+.inline-link i {
+    font-size: 0.9rem;
+}
+
+.inline-link:hover {
+    opacity: 0.7;
+}
+
+/* ==========================================================================
+   METICULOUS HARD RESPONSIVE BREAKPOINT LOCKS
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .give-wrapper {
+        padding: 60px 24px 80px 24px;
+    }
+}
+
 @media (max-width: 768px) {
-    .methods-grid { grid-template-columns: 1fr; margin-top: 20px; }
-    .impact-minimal { flex-direction: column; }
-    .method-card { padding: 30px 20px; }
-    .data-row { flex-direction: column; gap: 5px; }
-    .value.accent { font-size: 1.1rem; }
+    .luxury-nav-header {
+        padding: 20px 24px;
+    }
+    
+    .luxury-nav-header .main-nav {
+        gap: 16px;
+    }
+    
+    .give-hero {
+        margin-bottom: 40px;
+    }
+    
+    .give-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .give-hero .hero-sub {
+        font-size: 0.95rem;
+    }
+
+    /* Force grids cleanly down to 100% single row parameters */
+    .methods-grid, .impact-minimal {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        width: 100%;
+    }
+    
+    .method-card {
+        padding: 30px 20px;
+    }
+    
+    .account-copy-container {
+        max-width: 65%;
+    }
+    
+    .data-row .value.accent {
+        font-size: 1rem;
+    }
+    
+    .strategic-footer h2 {
+        font-size: 1.3rem;
+    }
 }
