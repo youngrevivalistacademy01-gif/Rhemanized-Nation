@@ -15,19 +15,19 @@
         <div class="grid-overlay"></div>
     </div>
 
-    <header class="luxury-nav-header">
-        <div class="brand">RHEMANIZED <span>NATION</span></div>
+    <header class="main-header">
+        <div class="brand">RHEMANIZED NATION</div>
         <nav class="main-nav">
-            <a href="index.html">HOME</a>
-            <a href="about.html">ABOUT</a>
-            <a href="contact.html">CONTACT</a>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
     <main class="give-wrapper">
         
         <section class="give-hero">
-            <span class="eyebrow">// KINGDOM PARTNERSHIP</span>
+            <span class="eyebrow">KINGDOM PARTNERSHIP</span>
             <h1>FUEL THE FIRE.</h1>
             <p class="hero-sub">Partner with us in equipping the next generation of revivalists and advancing the global apostolic mandate.</p>
         </section>
@@ -65,7 +65,7 @@
                 </button>
             </div>
 
-            <div class="method-card dark-accent">
+            <div class="method-card">
                 <div class="card-header">
                     <span class="method-tag">OPTION 02</span>
                     <h3>Digital Seed</h3>
@@ -73,9 +73,9 @@
                 
                 <div class="payment-selection">
                     <div class="input-group">
-                        <label for="seed-designation">DESIGNATE YOUR SEED</label>
+                        <label>DESIGNATE YOUR SEED</label>
                         <div class="select-wrapper">
-                            <select id="seed-designation" class="styled-select">
+                            <select class="styled-select">
                                 <option>Tithe / General Offering</option>
                                 <option>YRA Scholarship Fund</option>
                                 <option>Global Missions</option>
@@ -85,12 +85,8 @@
                     </div>
                     
                     <div class="button-stack">
-                        <a href="#" class="gate-link paystack">
-                            <span class="gate-inner">PAY VIA PAYSTACK <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
-                        </a>
-                        <a href="#" class="gate-link flutterwave">
-                            <span class="gate-inner">PAY VIA FLUTTERWAVE <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
-                        </a>
+                        <a href="#" class="gate-link paystack">PAY VIA PAYSTACK</a>
+                        <a href="#" class="gate-link flutterwave">PAY VIA FLUTTERWAVE</a>
                     </div>
                 </div>
             </div>
@@ -112,7 +108,7 @@
         <section class="strategic-footer">
             <h2>FOR STRATEGIC PARTNERSHIP</h2>
             <p>Interested in significant kingdom investment or long-term ministry partnership?</p>
-            <a href="contact.html" class="inline-link">Connect with our team <i class="fa-solid fa-arrow-right-long"></i></a>
+            <a href="contact.html" class="inline-link">Connect with our team &rarr;</a>
         </section>
     </main>
 
@@ -125,14 +121,16 @@
             const copyIcon = document.getElementById('copy-icon');
             const originalText = btnText.innerHTML;
             
-            // Visual dynamic mutation feedback state
+            // Subtle, non-dominant premium green feedback modifications
             btnText.innerHTML = `<i class="fa-solid fa-check"></i> COPIED TO CLIPBOARD`;
+            btnText.classList.add('success-state');
             if (copyIcon) {
                 copyIcon.className = "fa-solid fa-check text-success";
             }
             
             setTimeout(() => {
                 btnText.innerHTML = originalText;
+                btnText.classList.remove('success-state');
                 if (copyIcon) {
                     copyIcon.className = "fa-regular fa-copy";
                 }
